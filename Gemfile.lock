@@ -129,6 +129,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activesupport
   coffee-script
   compass
   compass-h5bp

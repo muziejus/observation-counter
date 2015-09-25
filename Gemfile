@@ -21,3 +21,4 @@ gem 'rspec'
 gem 'dm-rspec'
 gem 'factory_girl'
 gem 'openlibrary'
+gem 'activesupport' # needed for openlibrary
