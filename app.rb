@@ -69,4 +69,37 @@ class App < Sinatra::Base
     mustache :new_book_post
   end
 
+  post "/add-book" do
+    @page_title = "Saving #{params[:title]} | Novel Observer"
+    saved_book = Book.new
+    saved_book.attributes = { author: params[:author], title: params[:title], isbn: params[:readonlyISBN], first_page: params[:firstPage], last_page: params[:lastPage], cover: params[:cover], link: params[:link], year: params[:year] }
+    begin
+      saved_book.save
+      redirect "/books/#{saved_book.id}"
+    rescue DataMapper::SaveFailureError => e
+      haml :error, locals: { e: e, validation: saved_book.errors.values.join(', ') }
+    rescue StandardError => e
+      haml :error, locals: { e: e }
+    end
+  end
+
+  get "/books/:id" do
+    @book = Book.get params[:id].to_i
+    if @book.nil?
+      redirect '/books'
+    else
+      mustache :book_show
+    end
+  end
+
+  get "/books" do
+    @books = Book.all
+    mustache :books_show
+  end
+
+  get "/about" do
+    @page_title = "About | Novel Observer"
+    mustache :about
+  end
+
 end
