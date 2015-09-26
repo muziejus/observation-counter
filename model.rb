@@ -36,4 +36,4 @@ class Observation
 end
 
 # DataMapper.finalize # sets up the models for first time use.
-DataMapper.auto_migrate!
+DataMapper.auto_upgrade!
