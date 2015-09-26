@@ -10,7 +10,9 @@ class Book
   property :isbn, String
   property :author, String
   property :title, String
+  property :year, Integer
   property :cover, Text
+  property :link, Text
   property :first_page, Integer
   property :last_page, Integer
 

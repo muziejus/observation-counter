@@ -1,6 +1,7 @@
 require "sinatra/base"
 require "sinatra/assetpack"
 require "mustache/sinatra"
+require "googlebooks"
 require_relative "./model"
 
 class App < Sinatra::Base
@@ -40,7 +41,6 @@ class App < Sinatra::Base
   before do
     @css = css :app_css
     @js  = js  :app_js
-    @js_modernizr = js :app_js_modernizr
   end
 
   helpers do
@@ -54,7 +54,19 @@ class App < Sinatra::Base
   end   
 
   get "/" do
-    @page_title = "Page Title"
+    @page_title = "Novel Observer"
     mustache :index
   end
+
+  get "/new-book" do
+    @page_title = "Add New Book | Novel Observer"
+    mustache :new_book
+  end
+
+  post "/new-book" do
+    @page_title = "Adding ISBN: #{params[:isbn]} | Novel Observer"
+    @new_book = GoogleBooks.search("isbn:#{params[:isbn]}").first
+    mustache :new_book_post
+  end
+
 end
