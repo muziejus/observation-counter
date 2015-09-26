@@ -1,20 +1,14 @@
 require "sinatra/base"
 require "sinatra/assetpack"
-require "compass"
-require "compass-h5bp"
-require "sinatra/support"
 require "mustache/sinatra"
+require_relative "./model"
 
 class App < Sinatra::Base
   base = File.dirname(__FILE__)
   set :root, base
 
   register Sinatra::AssetPack
-  register Sinatra::CompassSupport
   register Mustache::Sinatra
-
-  set :sass, Compass.sass_engine_options
-  set :sass, { :load_paths => sass[:load_paths] + [ "#{base}/app/css" ] }
 
   assets do
     serve "/js",    from: "app/js"
@@ -26,7 +20,7 @@ class App < Sinatra::Base
       "/js/*.js",
       "/js/vendor/jquery-1.9.1.min.js",
     ]
-    js :app_js_modernizr, [ "/js/vendor/modernizr-2.6.2.min.js" ]
+    #js :app_js_modernizr, [ "/js/vendor/modernizr-2.6.2.min.js" ]
 
     # Heroku doesn't like this call but assets end up minified anyway.
     # Left them in in for reference.
