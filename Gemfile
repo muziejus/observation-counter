@@ -21,3 +21,6 @@ gem 'rspec'
 gem 'dm-rspec'
 gem 'factory_girl'
 gem 'googlebooks'
+gem 'thin'
+gem 'shotgun'
+

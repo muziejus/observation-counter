@@ -30,6 +30,7 @@ GEM
       compass (~> 1.0, >= 1.0.3)
     compass-import-once (1.0.5)
       sass (>= 3.2, < 3.5)
+    daemons (1.1.9)
     data_mapper (1.2.0)
       dm-aggregates (~> 1.2.0)
       dm-constraints (~> 1.2.0)
@@ -82,6 +83,7 @@ GEM
       dm-core (~> 1.2.0)
     do_sqlite3 (0.10.16)
       data_objects (= 0.10.16)
+    eventmachine (1.0.3)
     execjs (2.6.0)
     factory_girl (4.4.0)
       activesupport (>= 3.0.0)
@@ -143,6 +145,10 @@ GEM
     sinatra-support (1.2.2)
       sinatra (>= 1.0)
     stringex (1.5.1)
+    thin (1.6.2)
+      daemons (>= 1.0.9)
+      eventmachine (>= 1.0.0)
+      rack (>= 1.0.0)
     thread_safe (0.3.5)
     tilt (1.4.1)
     tzinfo (1.2.2)
@@ -174,4 +180,5 @@ DEPENDENCIES
   sinatra
   sinatra-assetpack
   sinatra-support
+  thin
   unicorn
