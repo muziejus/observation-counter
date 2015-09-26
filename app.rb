@@ -1,6 +1,7 @@
 require "sinatra/base"
 require "sinatra/assetpack"
 require "mustache/sinatra"
+require "haml"
 require "googlebooks"
 require_relative "./model"
 
@@ -36,6 +37,11 @@ class App < Sinatra::Base
     :templates => "#{base}/app/templates",
     :views => "#{base}/app/views",
     :namespace => App
+  }
+
+  set :haml, {
+    format: :html5,
+    :views => "#{base}/app/views",
   }
 
   before do

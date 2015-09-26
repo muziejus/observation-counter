@@ -1,0 +1,9 @@
+#result
+  #resulttext
+    %h2 Oops.
+    %p Something bad happened and the database lost track of what’s going on.
+    %p Or, #{e.to_s}.
+    - unless validation.nil?
+      %p Validation: #{validation}
+    %p You can let @muziejus know about this error!
+#resultclear
