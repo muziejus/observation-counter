@@ -4,29 +4,31 @@
       <form action="/add-book" method="post">
         <div class="form-group">
           <label for="inputAuthor">Author</label>
-          <input type="text" class="form-control" name="author" placeholder="" value="{{{author}}}">
+          <input type="text" class="form-control" name="author" placeholder="" value="{{author}}">
         </div>
         <div class="form-group">
           <label for="inputTitle">Title</label>
-          <input type="text" class="form-control" name="title" placeholder="" value="{{{title}}}">
+          <input type="text" class="form-control" name="title" placeholder="" value="{{title}}">
         </div>
         <div class="row">
           <div class="col-xs-2 form-group">
             <label for="inputYear">Year</label>
-            <input type="number" class="form-control" name="year" placeholder="" value="{{{year}}}">
+            <input type="number" class="form-control" name="year" placeholder="" value="{{year}}">
           </div>
           <div class="col-xs-2 form-group">
             <label for="inputFirstPage">First Page</label>
-            <input type="number" class="form-control" name="firstPage" placeholder="" value="{{{first_page}}}">
+            <input type="number" class="form-control" name="firstPage" placeholder="" value="{{first_page}}">
           </div>
           <div class="col-xs-2 form-group">
             <label for="inputLastPage">Last Page</label>
-            <input type="number" class="form-control" name="lastPage" placeholder="" value="{{{last_page}}}">
+            <input type="number" class="form-control" name="lastPage" placeholder="" value="{{last_page}}">
           </div>
         </div>
         <div class="form-group">
           <label for="inputISBN">ISBN</label>
-          <input type="text" class="form-control" name="readonlyISBN" placeholder="" readonly value="{{{isbn}}}">
+          <input type="text" class="form-control" name="readonlyISBN" placeholder="" readonly value="{{isbn}}">
+          <input type="hidden" name="cover" value="{{cover}}">
+          <input type="hidden" name="link" value="{{link}}">
         </div>
         <div class="form-group">
           <button type="submit" class="btn btn-primary btn-default">Add book</button>
@@ -34,8 +36,8 @@
       </form>
     </div>
     <div class="col-md-3">
-      <img src="{{{cover}}}" alt="{{{cover_alt}}}">
-      <p><a href={{{link}}}>Google Books info</a></p>
+      <img src="{{cover}}" alt="{{cover_alt}}">
+      <p><a href={{link}}>Google Books info</a></p>
     </div>
   </div>
 </div>
