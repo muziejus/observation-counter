@@ -1,5 +1,6 @@
 require 'data_mapper'
 require 'dm-validations'
+require './stat'
 
 # DATABASE_URL is set by running: heroku config:set DATABASE_URL="<as in web client>"
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite://#{Dir.pwd}/db.db")
@@ -20,6 +21,41 @@ class Book
   has n, :observations
 
   validates_presence_of :isbn
+
+  def total_pages
+    self.last_page - self.first_page
+  end
+
+  def count_array
+    if self.observations.length == 0
+      [0, 0]
+    else
+      self.observations.map{ |observation| observation[:count] }
+    end
+  end
+
+  def count_per_page
+    if self.count_array == [0, 0]
+      "Sample pending"
+    else
+      "#{self.count_array.mean} ± #{self.count_confidence_interval}"
+    end
+  end
+
+  def count_confidence_interval
+    (2.093*(self.count_array.standard_deviation/Math.sqrt(20))).round(3)
+  end
+
+  def totals
+    if self.count_confidence_interval == 0
+      interval = 1
+    else
+      interval = self.count_confidence_interval * self.total_pages
+    end
+    { pages: self.total_pages, counts: self.total_pages * self.count_array.mean, interval: interval }
+  end
+
+
 end
 
 class Observation

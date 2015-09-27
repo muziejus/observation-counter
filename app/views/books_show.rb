@@ -5,7 +5,7 @@ class App
       include ViewHelpers
 
       def books
-        @books.map{ |b| { author: b.author, title: b.title, id: b.id, link: b.link, external_link: external_link_glyph(b.link), year: b.year, pages: b.last_page - b.first_page, count_per_page: count_per_page(count_list(b)) } }
+        @books.map{ |b| { author: b.author, title: b.title, id: b.id, link: b.link, external_link: external_link_glyph(b.link), year: b.year, pages: b.total_pages, count_per_page: b.count_per_page } }
       end
 
       def labels
@@ -16,13 +16,13 @@ class App
       
       def averages
         s = ""
-        @books.each{ |book| s = s + "#{count_list(book).mean}, " }
+        @books.each{ |book| s = s + "#{book.count_array.mean}, " }
         s.sub(/, $/, "")
       end
 
       def confidence_intervals
         s = ""
-        @books.each{ |book| s = s + "#{confidence_interval(count_list(book))}, " }
+        @books.each{ |book| s = s + "#{book.count_confidence_interval}, " }
         s.sub(/, $/, "")
       end
 
