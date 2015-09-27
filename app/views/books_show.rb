@@ -10,19 +10,19 @@ class App
 
       def labels
         s = ""
-        @books.each{ |book| s = s + "'#{book.title}', " }
+        @books.each{ |book| s = s + "'#{book.title}', " unless book.count_array == [0, 0] }
         s.sub(/, $/, "")
       end
       
       def averages
         s = ""
-        @books.each{ |book| s = s + "#{book.count_array.mean}, " }
+        @books.each{ |book| s = s + "#{book.count_array.mean}, " unless book.count_array == [0, 0] }
         s.sub(/, $/, "")
       end
 
       def confidence_intervals
         s = ""
-        @books.each{ |book| s = s + "#{book.count_confidence_interval}, " }
+        @books.each{ |book| s = s + "#{book.count_confidence_interval}, " unless book.count_array == [0, 0] }
         s.sub(/, $/, "")
       end
 

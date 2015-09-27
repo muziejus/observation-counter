@@ -29,7 +29,7 @@ class App
     def total_counts_for_scatter
       s = ""
       Book.all.each do |book|
-        s = s + "{ x: #{book.totals[:pages]}, y: #{book.totals[:counts]}, r: #{Math.sqrt book.totals[:interval]}, title: '#{book.title}'}, "
+        s = s + "{ x: #{book.totals[:pages]}, y: #{book.totals[:counts]}, r: #{Math.sqrt book.totals[:interval]}, title: '#{book.title}'}, " unless book.count_array == [0, 0] 
       end
       s.sub(/, $/, "") 
     end
