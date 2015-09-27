@@ -14,6 +14,18 @@ class App
           true
         end
       end
+      
+      def count_per_page_single
+        if count_list(@book) == [0, 0]
+          "[Currently Pending—see below]"
+        else
+          "#{count_list(@book).mean} ± #{confidence_interval count_list(@book)}"
+        end
+      end
+
+      def external_link
+        external_link_glyph(@book.link)
+      end
 
       def pages
         (@book.first_page..@book.last_page).map{ |p| p }.sample(20).sort.map { |pp| { page: pp } }

@@ -13,6 +13,14 @@ class App
       @js_chart
     end
 
+    def add_book_button
+      "<a href='/new-book' class='btn btn-primary btn-lg'>Add New Book</a>"
+    end
+
+    def external_link_glyph(link)
+      "<a href='#{link}' target='_blank'><span class='glyphicon glyphicon-new-window' aria-hidden='true'></span></a>"
+    end
+
     def count_list(book)
       if book.observations.length == 0
         [0, 0]

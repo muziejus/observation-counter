@@ -1,15 +1,14 @@
 <div class="row">
   <div class="col-md-9">
-    <h1><em>{{title}}</em></h1>
+    <h1><em>{{title}}</em> {{{external_link}}}</h1>
     <h2>{{author}}, {{year}} <small>(isbn: {{isbn}})</small></h2>
 
-    The text under consideration here goes from pages {{first_page}} to {{last_page}}.
+    The text under consideration here goes from pages {{first_page}} to {{last_page}}. Based on the observations below, this text has a count of {{count_per_page_single}}. 
 
     {{#observations_table}}
       <table class="table">
         <thead>
           <tr>
-            <th>#</th>
             <th>Page</th>
             <th>Count</th>
           </tr>
@@ -17,7 +16,6 @@
         <tbody>
           {{#observations}}
             <tr>
-              <td>{{id}}</td>
               <td>{{page}}</td>
               <td>{{count}}</td>
             </tr>
@@ -30,6 +28,7 @@
     {{/observations_table}}
   </div>
   <div class="col-md-3">
+    <p>{{{add_book_button}}}</p>
     <img src="{{cover}}" class="img-thumbnail img-responsive" alt="{{cover_alt}}">
     <p><a href={{link}}>Google Books info</a></p>
   </div>

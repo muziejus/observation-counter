@@ -5,7 +5,7 @@ class App
       include ViewHelpers
 
       def books
-        @books.map{ |b| { author: b.author, title: b.title, id: b.id, link: b.link, year: b.year, pages: b.last_page - b.first_page, count_per_page: count_per_page(count_list(b)) } }
+        @books.map{ |b| { author: b.author, title: b.title, id: b.id, link: b.link, external_link: external_link_glyph(b.link), year: b.year, pages: b.last_page - b.first_page, count_per_page: count_per_page(count_list(b)) } }
       end
 
       def labels
