@@ -4,9 +4,33 @@
     <h2>{{author}}, {{year}} <small>(isbn: {{isbn}})</small></h2>
 
     The text under consideration here goes from pages {{first_page}} to {{last_page}}.
+
+    {{#observations_table}}
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Page</th>
+            <th>Count</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#observations}}
+            <tr>
+              <td>{{id}}</td>
+              <td>{{page}}</td>
+              <td>{{count}}</td>
+            </tr>
+          {{/observations}}
+        </tbody>
+      </table>
+    {{/observations_table}}
+    {{^observations_table}}
+      {{> observation_form}}
+    {{/observations_table}}
   </div>
   <div class="col-md-3">
-    <img src="{{cover}}" alt="{{cover_alt}}">
+    <img src="{{cover}}" class="img-thumbnail img-responsive" alt="{{cover_alt}}">
     <p><a href={{link}}>Google Books info</a></p>
   </div>
 </div>

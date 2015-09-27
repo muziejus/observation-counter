@@ -1,0 +1,16 @@
+<form class="form-horizontal" action="/add-observations" method="post">
+  <p>Below are 30 randomly selected pages from the novel. For each page, count up how many of whatever it is you’re counting appear on that page. Don’t worry if it’s 0 or a blank page. That’s the point.</p>
+  {{#pages}}
+    <div class="form-group">
+      <label for="inputPage{{page}}" class="col-xs-2 control-label">Page {{page}}</label>
+      <div class="col-xs-2">
+        <input type="number" class="form-control" name="counts[page{{page}}][count]">
+        <input type="hidden" name="counts[page{{page}}][page]" value="{{page}}">
+      </div>
+    </div>
+  {{/pages}}
+  <div class="form-group">
+    <input type="hidden" name="id" value="{{id}}">
+    <button type="submit" class="btn btn-primary btn-default">Add book</button>
+  </div>
+</form>

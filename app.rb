@@ -89,6 +89,11 @@ class App < Sinatra::Base
     end
   end
 
+  post "/add-observations" do
+    Book.get(params[:id]).update(observations: params[:counts].map{ |k, v| v })
+    redirect "/books/#{params[:id]}"
+  end
+
   get "/books/:id" do
     @book = Book.get params[:id].to_i
     if @book.nil?
