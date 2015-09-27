@@ -9,6 +9,10 @@ class App
       @js
     end
 
+    def js_chart
+      @js_chart
+    end
+
     def observations_list(book)
       if book.observations.length == 0
         [0, 0]
