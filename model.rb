@@ -1,7 +1,8 @@
 require 'data_mapper'
 require 'dm-validations'
 
-DataMapper.setup(:default, 'sqlite:///users/moacir/Projects/observation-counter/db.db')
+# DATABASE_URL is set by running: heroku config:set DATABASE_URL="<as in web client>"
+DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite://#{Dir.pwd}/db.db")
 
 class Book
   include DataMapper::Resource
