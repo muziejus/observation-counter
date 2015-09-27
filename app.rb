@@ -4,6 +4,7 @@ require "mustache/sinatra"
 require "haml"
 require "googlebooks"
 require_relative "./model"
+require_relative "./stat"
 
 class App < Sinatra::Base
   base = File.dirname(__FILE__)
@@ -53,6 +54,18 @@ class App < Sinatra::Base
 
   end
 
+  module ViewHelpers
+    def observations_per_page(book)
+      obs = book.observations.map{ |o| o[:count] }
+      if obs.length == 0
+        "Sample pending"
+      else
+        "#{obs.mean} ± #{(2.093*(obs.standard_deviation/Math.sqrt(20))).round(2)}"
+      end
+    end
+
+  end
+  
   # Function allows both get / post.
   def self.get_or_post(path, opts={}, &block)
     get(path, opts, &block)
