@@ -1,29 +1,39 @@
 <h1>List of Books</h1>
 <p class="lead">This is the current list of books that have been added to the database.</p>
-<table class="table table-striped table-hover">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Title</th>
-      <th>Author</th>
-      <th>Year</th>
-      <th>Pages</th>
-      <th>Obs./Page</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#books}}
-      <tr>
-        <td>
-          <a href="/books/{{id}}">{{id}}</a>
-        </td>
-        <td><em>{{title}}</em> <a href="{{link}}" target="_blank"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a></td>
-        <td>{{author}}</td>
-        <td>{{year}}</td>
-        <td>{{pages}}</td>
-        <td>{{observations_per_page}}</td>
-      </tr>
-    {{/books}}
-  </tbody>
-</table>
+<div class="row">
+  <div class="col-sm-6">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Year</th>
+          <th>Pages</th>
+          <th>Obs./Page</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#books}}
+          <tr>
+            <td>
+              <a href="/books/{{id}}">{{id}}</a>
+            </td>
+            <td><em>{{title}}</em> <a href="{{link}}" target="_blank"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a></td>
+            <td>{{author}}</td>
+            <td>{{year}}</td>
+            <td>{{pages}}</td>
+            <td>{{observations_per_page}}</td>
+          </tr>
+        {{/books}}
+      </tbody>
+    </table>
+  </div>
+  <div class="col-sm-6">
+    <canvas id="myChart" width="500" height="400"></canvas>
+  </div>
+</div>
+<script>
+  {{> graph_script}}
+</script>
           

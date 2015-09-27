@@ -20,7 +20,7 @@ class App < Sinatra::Base
 
     css :app_css, [ "/css/*.css" ]
     js :app_js, [
-      "/js/*.js"
+      "/js/*.js", "/js/vendor/*.js"
     ]
     #js :app_js_modernizr, [ "/js/vendor/modernizr-2.6.2.min.js" ]
 
@@ -54,17 +54,6 @@ class App < Sinatra::Base
 
   end
 
-  module ViewHelpers
-    def observations_per_page(book)
-      obs = book.observations.map{ |o| o[:count] }
-      if obs.length == 0
-        "Sample pending"
-      else
-        "#{obs.mean} ± #{(2.093*(obs.standard_deviation/Math.sqrt(20))).round(2)}"
-      end
-    end
-
-  end
   
   # Function allows both get / post.
   def self.get_or_post(path, opts={}, &block)
