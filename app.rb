@@ -46,6 +46,7 @@ class App < Sinatra::Base
   before do
     @css = css :app_css
     @js  = js  :app_js
+    @path = request.path_info
   end
 
   helpers do
