@@ -16,10 +16,10 @@ class App
       end
       
       def count_per_page_single
-        if count_list(@book) == [0, 0]
+        if @book.count_array == [0, 0]
           "[Currently Pending—see below]"
         else
-          "#{count_list(@book).mean} ± #{confidence_interval count_list(@book)}"
+          "#{@book.count_per_page}"
         end
       end
 
