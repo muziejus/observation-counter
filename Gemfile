@@ -9,8 +9,8 @@ gem 'sinatra-support', require: 'sinatra/support'
 gem 'sinatra-assetpack', require: 'sinatra/assetpack'
 gem 'mustache-sinatra'
 gem 'data_mapper'
-gem 'dm-sqlite-adapter'
-gem 'dm-postgres-adapter'
+gem 'dm-sqlite-adapter', group: :development
+gem 'dm-postgres-adapter', group: :production
 gem 'dm-validations'
 gem 'rspec'
 gem 'dm-rspec'
