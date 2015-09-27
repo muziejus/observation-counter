@@ -16,7 +16,7 @@ class App
       end
 
       def pages
-        (@book.first_page..@book.last_page).map{ |p| p }.sample(30).sort.map { |pp| { page: pp } }
+        (@book.first_page..@book.last_page).map{ |p| p }.sample(20).sort.map { |pp| { page: pp } }
       end
 
       def id
