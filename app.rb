@@ -23,15 +23,13 @@ class App < Sinatra::Base
       "/js/*.js", 
       # "/js/vendor/*.js"
     ]
-    js :app_js_chart, [ "/js/vendor/Chart.js" ]
+    js :app_js_chart, [ "/js/vendor/Chart.js", "/js/vendor/Chart.Scatter.js" ]
     # js :app_js_chart, [ "/js/vendor/Chart.min.js" ]
-    #js :app_js_modernizr, [ "/js/vendor/modernizr-2.6.2.min.js" ]
 
     # Heroku doesn't like this call but assets end up minified anyway.
     # Left them in in for reference.
     #css_compression :sass
     #js_compression  :jsmin
-    # js_compression :closure, level: "WHITESPACE_ONLY"
   end
 
   require "#{base}/app/helpers"

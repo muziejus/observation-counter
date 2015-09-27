@@ -1,0 +1,16 @@
+var data = [
+{
+      strokeColor: '#F16220',
+      pointColor: '#F16220',
+      pointStrokeColor: '#fff',
+      data: [
+        {{{total_counts_for_scatter}}}
+      ]
+    }
+];
+var ctx = $("#myScatter").get(0).getContext("2d");
+var myScatterChart = new Chart(ctx).Scatter(data, {
+  datasetStroke: false,
+  tooltipTemplate: "<%if (datasetLabel){%><%=datasetLabel%>: <%}%><%=argLabel%>; <%=valueLabel%>",
+  multiTooltipTemplate: "<%=argLabel%>; <%=valueLabel%>"
+  });
