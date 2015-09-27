@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.1.0'
+ruby '2.2.3'
 
 gem 'unicorn'
 gem 'sinatra'
@@ -15,6 +15,6 @@ gem 'dm-validations'
 gem 'rspec'
 gem 'dm-rspec'
 gem 'googlebooks'
-gem 'thin'
+gem 'thin', '~> 1.6.4'
 gem 'shotgun'
 
