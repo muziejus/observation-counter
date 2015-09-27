@@ -8,7 +8,8 @@ class App
       end
 
       def observations_table
-        if @book.observations.all.length == 0
+        if @path =~ /books.observations/
+        # if @book.observations.all.length == 0
           false
         else
           true
@@ -17,7 +18,7 @@ class App
       
       def count_per_page_single
         if @book.count_array == [0, 0]
-          "[Currently Pending—see below]"
+          "[Currently Pending]"
         else
           "#{@book.count_per_page}"
         end

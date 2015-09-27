@@ -65,29 +65,29 @@ class App < Sinatra::Base
   end   
 
   get "/" do
-    @page_title = "Novel Observer"
+    @page_title = "Home"
     mustache :index
   end
 
   get "/new-book" do
-    @page_title = "Add New Book | Novel Observer"
+    @page_title = "Add New Book"
     mustache :new_book
   end
 
   post "/new-book" do
-    @page_title = "Adding ISBN: #{params[:isbn]} | Novel Observer"
+    @page_title = "Adding ISBN: #{params[:isbn]}"
     @new_book = GoogleBooks.search("isbn:#{params[:isbn]}").first
     @isbn = params[:isbn] # sometimes google doesn't return one.
     mustache :new_book_post
   end
 
   post "/add-book" do
-    @page_title = "Saving #{params[:title]} | Novel Observer"
+    @page_title = "Saving #{params[:title]}"
     saved_book = Book.new
     saved_book.attributes = { author: params[:author], title: params[:title], isbn: params[:readonlyISBN], first_page: params[:firstPage], last_page: params[:lastPage], cover: params[:cover], link: params[:link], year: params[:year] }
     begin
       saved_book.save
-      redirect "/books/#{saved_book.id}"
+      redirect "/books/observations/#{saved_book.id}"
     rescue DataMapper::SaveFailureError => e
       haml :error, locals: { e: e, validation: saved_book.errors.values.join(', ') }
     rescue StandardError => e
@@ -95,13 +95,20 @@ class App < Sinatra::Base
     end
   end
 
+  get "/books/observations/:id" do
+    @book = Book.get params[:id].to_i
+    mustache :book_show
+  end
+
   post "/add-observations" do
+    @page_title = "Adding observations"
     Book.get(params[:id]).update(observations: params[:counts].map{ |k, v| v })
     redirect "/books/#{params[:id]}"
   end
 
   get "/books/:id" do
     @book = Book.get params[:id].to_i
+    @page_title = "#{@book.title}"
     if @book.nil?
       redirect '/books'
     else
@@ -110,12 +117,13 @@ class App < Sinatra::Base
   end
 
   get "/books" do
+    @page_title = "All Books"
     @books = Book.all
     mustache :books_show
   end
 
   get "/about" do
-    @page_title = "About | Novel Observer"
+    @page_title = "About"
     mustache :about
   end
 

@@ -15,6 +15,7 @@ class App
 
     def add_book_button
       "<a href='/new-book' class='btn btn-primary btn-lg'>Add New Book</a>"
+      # "<a href='/new-book' class='btn btn-primary btn-lg disabled'>Add New Book</a>"
     end
 
     def external_link_glyph(link)
