@@ -15,7 +15,7 @@ class App
       end
 
       def isbn
-        @new_book.isbn
+        @isbn
       end
 
       def first_page

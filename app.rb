@@ -85,6 +85,7 @@ class App < Sinatra::Base
   post "/new-book" do
     @page_title = "Adding ISBN: #{params[:isbn]} | Novel Observer"
     @new_book = GoogleBooks.search("isbn:#{params[:isbn]}").first
+    @isbn = params[:isbn] # sometimes google doesn't return one.
     mustache :new_book_post
   end
 
