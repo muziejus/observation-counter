@@ -13,7 +13,7 @@ class App
       @js_chart
     end
 
-    def observations_list(book)
+    def count_list(book)
       if book.observations.length == 0
         [0, 0]
       else
@@ -21,16 +21,16 @@ class App
       end
     end
 
-    def observations_per_page(observations)
-      if observations == [0, 0]
+    def count_per_page(count_list)
+      if count_list == [0, 0]
         "Sample pending"
       else
-        "#{observations.mean} ± #{confidence_interval observations}"
+        "#{count_list.mean} ± #{confidence_interval count_list}"
       end
     end
 
-    def confidence_interval(observations)
-      (2.093*(observations.standard_deviation/Math.sqrt(20))).round(3)
+    def confidence_interval(count_list)
+      (2.093*(count_list.standard_deviation/Math.sqrt(20))).round(3)
     end
 
   end
