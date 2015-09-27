@@ -19,8 +19,7 @@ class App < Sinatra::Base
 
     css :app_css, [ "/css/*.css" ]
     js :app_js, [
-      "/js/*.js",
-      "/js/vendor/jquery-1.9.1.min.js",
+      "/js/*.js"
     ]
     #js :app_js_modernizr, [ "/js/vendor/modernizr-2.6.2.min.js" ]
 
