@@ -66,18 +66,30 @@
 					if (this.display && this.size > 0) {
 
 						var ctx = this.ctx;
-						ctx.beginPath();
+            // Moacir added these two lines.
+            ctx.moveTo(this.x, this.y - this.radius * this.size);
+            ctx.lineTo(this.x, this.y + this.radius * this.size);
+						// ctx.beginPath();
 
-						ctx.arc(this.x, this.y, this.size * this.radius, 0, Math.PI * 2);
-						ctx.closePath();
+						// ctx.arc(this.x, this.y, this.size * this.radius, 0, Math.PI * 2);
+						// ctx.closePath();
 
 						ctx.strokeStyle = this.strokeColor;
-						ctx.lineWidth = this.strokeWidth;
+						// ctx.lineWidth = this.strokeWidth;
+						ctx.lineWidth = 2 * this.strokeWidth;
 
 						ctx.fillStyle = this.fillColor;
 
 						ctx.fill();
 						ctx.stroke();
+
+            // Moacir added.
+            ctx.moveTo(this.x - 10, this.y - this.radius * this.size);
+            ctx.lineTo(this.x + 10, this.y - this.radius * this.size);
+            ctx.stroke();
+            ctx.moveTo(this.x - 10, this.y + this.radius * this.size);
+            ctx.lineTo(this.x + 10, this.y + this.radius * this.size);
+            ctx.stroke();
 					}
 				}
 			})
