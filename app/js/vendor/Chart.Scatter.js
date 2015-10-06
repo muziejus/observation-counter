@@ -67,8 +67,8 @@
 
 						var ctx = this.ctx;
             // Moacir added these two lines. They draw the vertical bar.
-            ctx.moveTo(this.x, this.y - this.radius * this.size);
-            ctx.lineTo(this.x, this.y + this.radius * this.size);
+            ctx.moveTo(this.x, this.y - this.size); // * this.radius);
+            ctx.lineTo(this.x, this.y + this.size); // * this.radius);
 						// ctx.beginPath();
 
 						// ctx.arc(this.x, this.y, this.size * this.radius, 0, Math.PI * 2);
@@ -84,11 +84,11 @@
 						ctx.stroke();
 
             // Moacir added. These draw the horizontal bars.
-            ctx.moveTo(this.x - 10, this.y - this.radius * this.size);
-            ctx.lineTo(this.x + 10, this.y - this.radius * this.size);
+            ctx.moveTo(this.x - 10, this.y - this.size); // * this.radius);
+            ctx.lineTo(this.x + 10, this.y - this.size); // * this.radius);
             ctx.stroke();
-            ctx.moveTo(this.x - 10, this.y + this.radius * this.size);
-            ctx.lineTo(this.x + 10, this.y + this.radius * this.size);
+            ctx.moveTo(this.x - 10, this.y + this.size); // * this.radius);
+            ctx.lineTo(this.x + 10, this.y + this.size); // * this.radius);
             ctx.stroke();
 
             ctx.fillRect(this.x - 3, this.y - 3, 6, 6);
