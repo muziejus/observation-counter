@@ -66,7 +66,7 @@
 					if (this.display && this.size > 0) {
 
 						var ctx = this.ctx;
-            // Moacir added these two lines.
+            // Moacir added these two lines. They draw the vertical bar.
             ctx.moveTo(this.x, this.y - this.radius * this.size);
             ctx.lineTo(this.x, this.y + this.radius * this.size);
 						// ctx.beginPath();
@@ -83,13 +83,15 @@
 						ctx.fill();
 						ctx.stroke();
 
-            // Moacir added.
+            // Moacir added. These draw the horizontal bars.
             ctx.moveTo(this.x - 10, this.y - this.radius * this.size);
             ctx.lineTo(this.x + 10, this.y - this.radius * this.size);
             ctx.stroke();
             ctx.moveTo(this.x - 10, this.y + this.radius * this.size);
             ctx.lineTo(this.x + 10, this.y + this.radius * this.size);
             ctx.stroke();
+
+            ctx.fillRect(this.x - 3, this.y - 3, 6, 6);
 					}
 				}
 			})
