@@ -78,7 +78,23 @@ class App < Sinatra::Base
 
   post "/new-book" do
     @page_title = "Adding ISBN: #{params[:isbn]}"
-    @new_book = GoogleBooks.search("isbn:#{params[:isbn]}").first
+    result = GoogleBooks.search("isbn:#{params[:isbn]}").first
+    unless result.nil?
+      @new_book = { authors: result.authors, 
+                    title: result.title, 
+                    year: result.published_date[0..3],
+                    last_page: result.page_count,
+                    cover: result.image_link,
+                    link: result.info_link }
+    else
+      # clumsy kludge for when GoogleBooks returns a 
+      @new_book = { authors: "AUTHOR NOT FOUND", 
+                    title: "TITLE NOT FOUND", 
+                    year: "",
+                    last_page: "",
+                    cover: nil,
+                    link: "" }
+    end
     @isbn = params[:isbn] # sometimes google doesn't return one.
     mustache :new_book_post
   end
