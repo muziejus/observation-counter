@@ -80,7 +80,7 @@ class App < Sinatra::Base
     @page_title = "Adding ISBN: #{params[:isbn]}"
     result = GoogleBooks.search("isbn:#{params[:isbn]}").first
     unless result.nil?
-      @new_book = { authors: result.authors, 
+      @new_book = { author: result.authors,
                     title: result.title, 
                     year: result.published_date[0..3],
                     last_page: result.page_count,
@@ -88,7 +88,7 @@ class App < Sinatra::Base
                     link: result.info_link }
     else
       # clumsy kludge for when GoogleBooks returns a 
-      @new_book = { authors: "AUTHOR NOT FOUND", 
+      @new_book = { author: "AUTHOR NOT FOUND", 
                     title: "TITLE NOT FOUND", 
                     year: "",
                     last_page: "",
